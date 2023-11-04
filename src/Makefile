@@ -9,7 +9,14 @@ TOPLEVEL_LANG ?= verilog
 ifneq ($(GATES),yes)
 
 # this is the only part you should need to modify:
-VERILOG_SOURCES += $(PWD)/tb.v $(PWD)/tt_um_seven_segment_seconds.v $(PWD)/decoder.v
+VERILOG_SOURCES += $(PWD)/tt_um_gharenthi_top.v
+VERILOG_SOURCES += $(PWD)/add1.v
+VERILOG_SOURCES += $(PWD)/add8.v
+VERILOG_SOURCES += $(PWD)/decay.v
+VERILOG_SOURCES += $(PWD)/neuron.v
+VERILOG_SOURCES += $(PWD)/reg8.v
+VERILOG_SOURCES += $(PWD)/synapse.v
+VERILOG_SOURCES += $(PWD)/tb.v
 
 else
 
