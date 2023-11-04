@@ -25,7 +25,7 @@ wire [0:15] sum_1;
 add8 a10(.in_a(sum_0[0:7]  ), .in_b(sum_0[8:15] ), .sum(sum_1[0:7] ), .carry_in(1'b0), .carry_out());
 add8 a11(.in_a(sum_0[16:23]), .in_b(sum_0[24:31]), .sum(sum_1[8:15]), .carry_in(1'b0), .carry_out());
 wire [0:7] sum_2;
-add8 a2(.in_a(sum_1[0:7]), .in_b(sum_1[8:15]), .sum(sum_1[0:7]), .carry_in(1'b0), .carry_out());
+add8 a2(.in_a(sum_1[0:7]), .in_b(sum_1[8:15]), .sum(sum_2[0:7]), .carry_in(1'b0), .carry_out());
 
 wire [0:7] sum_3;
 wire [0:7] reg_out;
