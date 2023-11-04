@@ -8,7 +8,7 @@ module reg8(
 logic [0:7] mem;
 
 always @(posedge clk){
-    mem [0:7] <= write [0:7] & {8'{reset}};
+    mem [0:7] <= write [0:7] & {8{reset}};
 }
 
 endmodule
