@@ -1,19 +1,20 @@
 module neuron(
     input   wire [0:8]  inputs,
     input   wire        learn,
+    output  wire        spike_out,
     input   wire        clk,
-    output  wire        spike_out
+    input   wire        reset
 );
 
 wire [0:63] acts;
-synapse s0(.pre_spike(inputs[0]), .post_spike(spike_out), .learn(learn), .clk(clk), .activation(acts[0:7]   ));
-synapse s1(.pre_spike(inputs[1]), .post_spike(spike_out), .learn(learn), .clk(clk), .activation(acts[8:15]  ));
-synapse s2(.pre_spike(inputs[2]), .post_spike(spike_out), .learn(learn), .clk(clk), .activation(acts[16:23] ));
-synapse s3(.pre_spike(inputs[3]), .post_spike(spike_out), .learn(learn), .clk(clk), .activation(acts[24:31] ));
-synapse s4(.pre_spike(inputs[4]), .post_spike(spike_out), .learn(learn), .clk(clk), .activation(acts[32:39] ));
-synapse s5(.pre_spike(inputs[5]), .post_spike(spike_out), .learn(learn), .clk(clk), .activation(acts[40:47] ));
-synapse s6(.pre_spike(inputs[6]), .post_spike(spike_out), .learn(learn), .clk(clk), .activation(acts[48:55] ));
-synapse s7(.pre_spike(inputs[7]), .post_spike(spike_out), .learn(learn), .clk(clk), .activation(acts[56:63] ));
+synapse s0(.pre_spike(inputs[0]), .post_spike(spike_out), .learn(learn), .clk(clk), .reset(reset), .activation(acts[0:7]   ));
+synapse s1(.pre_spike(inputs[1]), .post_spike(spike_out), .learn(learn), .clk(clk), .reset(reset), .activation(acts[8:15]  ));
+synapse s2(.pre_spike(inputs[2]), .post_spike(spike_out), .learn(learn), .clk(clk), .reset(reset), .activation(acts[16:23] ));
+synapse s3(.pre_spike(inputs[3]), .post_spike(spike_out), .learn(learn), .clk(clk), .reset(reset), .activation(acts[24:31] ));
+synapse s4(.pre_spike(inputs[4]), .post_spike(spike_out), .learn(learn), .clk(clk), .reset(reset), .activation(acts[32:39] ));
+synapse s5(.pre_spike(inputs[5]), .post_spike(spike_out), .learn(learn), .clk(clk), .reset(reset), .activation(acts[40:47] ));
+synapse s6(.pre_spike(inputs[6]), .post_spike(spike_out), .learn(learn), .clk(clk), .reset(reset), .activation(acts[48:55] ));
+synapse s7(.pre_spike(inputs[7]), .post_spike(spike_out), .learn(learn), .clk(clk), .reset(reset), .activation(acts[56:63] ));
 
 wire [0:31] sum_0;
 add8 a00(.in_a(acts[0:7]  ), .in_b(acts[8:15] ), .sum(sum_0[0:7]  ), .carry_in(0), .carry_out());

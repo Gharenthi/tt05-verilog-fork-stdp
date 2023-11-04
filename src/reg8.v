@@ -1,13 +1,14 @@
 module reg8(
     input   wire [0:7]  write,
     output  wire [0:7]  read,
-    input   wire        clk
+    input   wire        clk,
+    input   wire        reset
 );
 
 logic [0:7] mem;
 
 always @(posedge clk){
-    mem [0:7] <= write [0:7]
+    mem [0:7] <= write [0:7] & {8'{reset}};
 }
 
 endmodule
