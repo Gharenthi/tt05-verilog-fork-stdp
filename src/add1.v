@@ -6,7 +6,8 @@ module add1(
     output  wire         carry_out
 );
 
-assign wire p1 = in_a ^ in_b;
+wire p1;
+assign p1 = in_a ^ in_b;
 
 assign sum = p1 ^ carry_in;
 assign carry_out = (p1 & carry_in) | (in_a & in_b);
