@@ -19,7 +19,7 @@ assign activation = rw_out[0:7] & {8{pre_spike}};
 assign clk_update = clk & learn;
 
 
-reg8 r_weight(.write(new_weight[0:7] | {7{1'b0}, wnew_clip}), .read(rw_out[0:7]), .clk(clk_update & post_spike), .reset(reset));
+reg8 r_weight(.write(new_weight[0:7] | {{7{1'b0}}, wnew_clip}), .read(rw_out[0:7]), .clk(clk_update & post_spike), .reset(reset));
 add8 a_wnew(.in_a(rw_out[0:7]), .in_b(delta_weight[0:7]), .sum(new_weight[0:7]), .carry_in(1'b0), .carry_out(wnew_clip));
 
 reg8 r_hyst(.write({8{pre_spike}} | hyst_decay_out), .read(hyst_out[0:7]), .clk(clk_update), .reset(reset));
