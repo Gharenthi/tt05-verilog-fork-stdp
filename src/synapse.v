@@ -7,7 +7,7 @@ module synapse(
     output  wire [0:7]  activation
 );
 
-assign activation = 8'hff;
+assign activation = 8'xff;
 
 //reg8 r_pre_hyst();
 //reg8 r_post_hyst();
