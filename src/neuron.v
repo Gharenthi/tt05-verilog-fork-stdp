@@ -1,5 +1,5 @@
 module neuron(
-    input   wire [0:8]  inputs,
+    input   wire [0:7]  inputs,
     input   wire        learn,
     output  wire        spike_out,
     input   wire        clk,
