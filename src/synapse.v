@@ -7,16 +7,24 @@ module synapse(
     output  wire [0:7]  activation
 );
 
-assign activation = 2'b00000000;
+wire [0:7] rw_out;
+wire [0:7] new_weight;
+wire [0:7] delta_weight;
+wire [0:7] hyst_out;
+wire [0:7] hyst_decay_out;
+wire clk_update;
+wire wnew_clip;
 
-// wire [0:7] rw_out;
+assign activation = rw_out[0:7] & {8{pre_spike}};
+assign clk_update = clk & learn;
 
-//reg8 r_pre_hyst();
-//reg8 r_post_hyst();
-// reg8 r_weight(.write(sum_3[0:7]), .read(rw_out[0:7]), .clk(clk), .reset(reset));
 
-//add8 post_mult(.in_a(), .in_b(), .sum() .carry_in(), .carry_out())
+reg8 r_weight(.write(new_weight[0:7] | {7{1'b0}, wnew_clip}), .read(rw_out[0:7]), .clk(clk_update & post_spike), .reset(reset));
+add8 a_wnew(.in_a(rw_out[0:7]), .in_b(delta_weight[0:7]), .sum(new_weight[0:7]), .carry_in(1'b0), .carry_out(wnew_clip));
 
+reg8 r_hyst(.write({8{pre_spike}} | hyst_decay_out), .read(hyst_out[0:7]), .clk(clk_update), .reset(reset));
+add8 a_delta(.in_a(hyst_out[0:7]), .in_b(8'b11111100), .sum(delta_weight[0:7]), .carry_in(1'b0), .carry_out());
+decay leak(.in(hyst_out[0:7]), .out(hyst_decay_out[0:7]));
 
 
 endmodule
