@@ -6,6 +6,8 @@ module neuron(
     input   wire        reset
 );
 
+assign spike_out = 1'b1;
+
 // wire [0:63] acts;
 // synapse s0(.pre_spike(inputs[0]), .post_spike(spike_out), .learn(learn), .clk(clk), .reset(reset), .activation(acts[0:7]   ));
 // synapse s1(.pre_spike(inputs[1]), .post_spike(spike_out), .learn(learn), .clk(clk), .reset(reset), .activation(acts[8:15]  ));
