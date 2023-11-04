@@ -3,7 +3,7 @@ module synapse(
     input   wire        post_spike,
     input   wire        learn,
     input   wire        clk,
-    output  wire [0:7]  spike_out
+    output  wire [0:7]  activation
 );
 
 wire [0:7] rpre_out;
