@@ -7,9 +7,7 @@ module synapse(
     output  wire [0:7]  activation
 );
 
-wire [0:7] rpre_out;
-wire [0:7] rpos_out;
-wire [0:7] rwgt_out;
+assign activation = 8'hff;
 
 //reg8 r_pre_hyst();
 //reg8 r_post_hyst();
