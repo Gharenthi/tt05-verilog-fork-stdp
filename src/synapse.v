@@ -14,7 +14,7 @@ reg8 r_pre_hyst();
 reg8 r_post_hyst();
 reg8 r_weight();
 
-add8 post_mult(.in_a(), .in_b(), .sum() .carry_in(), .carry_out())
+//add8 post_mult(.in_a(), .in_b(), .sum() .carry_in(), .carry_out())
 
 
 
