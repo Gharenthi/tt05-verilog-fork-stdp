@@ -30,7 +30,7 @@ add8 a2(.in_a(sum_1[0:7]), .in_b(sum_1[8:15]), .sum(sum_1[0:7]), .carry_in(0), .
 wire [0:7] sum_3;
 wire [0:7] reg_out;
 wire [0:7] decay_out;
-reg8 acc(.write(sum_3[0:7]), .read(reg_out[0:7]), .clk(clk));
+reg8 acc(.write(sum_3[0:7]), .read(reg_out[0:7]), .clk(clk), .reset(reset));
 decay leak(.in(reg_out[0:7]), .out(decay_out[0:7]));
 add8 a3(.in_a(sum_2[0:7]), .in_b(decay_out[0:7]), .sum(sum_3[0:7]), .carry_in(0), .carry_out(spike_out));
 
